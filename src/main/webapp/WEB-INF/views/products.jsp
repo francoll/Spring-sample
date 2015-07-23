@@ -11,7 +11,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js">	
 </script>
-<script src="/resources/js/controllers.js"></script>
+<script src="/webstore/resources/js/controllers.js"></script>
 
 <title>Products</title>
 </head>

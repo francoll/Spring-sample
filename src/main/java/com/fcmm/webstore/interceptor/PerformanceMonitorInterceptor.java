@@ -24,6 +24,7 @@ public class PerformanceMonitorInterceptor implements HandlerInterceptor {
 		stopWatchLocal.set(stopWatch);
 
 		logger.info("Accessing URL path: " + getURLPath(pRequest));
+		logger.info("Request content type: " + pRequest.getHeader("Accept"));
 		logger.info("Request processing started on: " + getCurrentTime());
 		return true;
 	}

@@ -15,7 +15,9 @@
     <security:form-login login-page="/login" 
                default-target-url="/products/add"   
                authentication-failure-url="/loginfailed"/>
-        <security:logout logout-success-url="/logout" />
+    <security:logout logout-success-url="/logout" />
+    
+    <security:openid-login/>
   </security:http>
   
   <security:authentication-manager>

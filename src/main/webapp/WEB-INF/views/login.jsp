@@ -47,7 +47,17 @@
 								<input class="btn btn-lg btn-success btn-block" type="submit"
 									value="Login">
 							</fieldset>
+
 						</form>
+                        <h3 class="panel-title">Or log in with AppDirect</h3>
+						<form action="j_spring_openid_security_check" id="AppDirectOpenId"
+							method="post" target="_top">
+							<input id="openid_identifier" name="openid_identifier"
+								type="hidden" value="${openId_url}" />
+							<input class="btn btn-lg btn-success btn-block" type="submit"
+                                    value="Login">
+						</form>
+
 					</div>
 				</div>
 			</div>
