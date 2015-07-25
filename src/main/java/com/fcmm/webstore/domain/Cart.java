@@ -1,10 +1,7 @@
 package com.fcmm.webstore.domain;
 
 import java.math.BigDecimal;
-import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map;
 
 public class Cart {

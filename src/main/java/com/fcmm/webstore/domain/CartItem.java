@@ -1,7 +1,6 @@
 package com.fcmm.webstore.domain;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 public class CartItem {
 
@@ -10,7 +9,7 @@ public class CartItem {
 	  private BigDecimal totalPrice;
 	  
 	  public CartItem() {
-	    // TODO Auto-generated constructor stub
+	    // Default constructor
 	  }
 	  
 	  public CartItem(Product product) {

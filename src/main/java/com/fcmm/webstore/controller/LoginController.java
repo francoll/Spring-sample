@@ -32,7 +32,7 @@ public class LoginController {
 		{
 			return pDestUrl;
 		}
-		return "welcome";
+		return "accounts";
 	}
 	
 	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)

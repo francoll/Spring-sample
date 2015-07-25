@@ -88,6 +88,27 @@
         <artifactId>spring-security-oauth2</artifactId>
         <version>2.0.7.RELEASE</version>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.security.oauth</groupId>
+        <artifactId>spring-security-oauth</artifactId>
+        <version>2.0.7.RELEASE</version>
+    </dependency>
+    <dependency>
+	    <groupId>oauth.signpost</groupId>
+	    <artifactId>oauth-signpost</artifactId>
+	    <version>1.2.1.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>net.oauth.core</groupId>
+	    <artifactId>oauth</artifactId>
+	    <version>20100527</version>
+	</dependency>
+	<dependency>
+	    <groupId>net.oauth.core</groupId>
+	    <artifactId>oauth-provider</artifactId>
+	    <version>20100527</version>
+	</dependency>
+	
   </dependencies>
   <properties>
   	<maven.compiler.source>1.7</maven.compiler.source>

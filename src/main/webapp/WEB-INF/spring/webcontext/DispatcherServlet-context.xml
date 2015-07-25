@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-	<mvc:annotation-driven enable-matrix-variables="true"
-		validator="validator" />
+	<mvc:annotation-driven enable-matrix-variables="true" validator="validator" />
 	<context:component-scan base-package="com.fcmm.webstore" />
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
@@ -29,6 +29,46 @@
 			<property name="offerRedirect" value="products" />
 		</bean>
 	</mvc:interceptors>
+	
+	<bean id="openIdUserService" class="com.fcmm.webstore.openid.OpenIdUserDetailService" />
+    <bean id="openIDAuthenticationFailureHandler"
+        class="com.fcmm.webstore.openid.OpenIDAuthenticationFailureHandler" />
+    <bean id="openIDAuthenticationSuccessHandler"
+        class="com.fcmm.webstore.openid.OpenIDAuthenticationSuccessHandler" />
+    <alias name="openIdUserService" alias="userAuthenticationProvider"/>
+    
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/products/add"
+            access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/accounts"
+            access="ROLE_ADMIN" />
+
+        <security:form-login login-page="/login"
+            default-target-url="/products/add" authentication-failure-url="/loginfailed" />
+        <security:logout logout-success-url="/logout" />
+
+        <security:openid-login user-service-ref="openIdUserService"
+            authentication-failure-handler-ref="openIDAuthenticationFailureHandler"
+            authentication-success-handler-ref="openIDAuthenticationSuccessHandler">
+            <security:attribute-exchange>
+                <security:openid-attribute name="email"
+                    type="http://schema.openid.net/contact/email" required="true" />
+                <security:openid-attribute name="firstName"
+                    type="http://axschema.org/namePerson/first" required="true" />
+                <security:openid-attribute name="lastName"
+                    type="http://axschema.org/namePerson/last" required="true" />
+            </security:attribute-exchange>
+        </security:openid-login>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userAuthenticationProvider"/>
+            <!--<security:user-service>
+                <security:user name="Admin" password="Admin123"
+                    authorities="ROLE_ADMIN" />
+            </security:user-service>
+        </security:authentication-provider>-->
+    </security:authentication-manager>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -41,8 +81,8 @@
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
 
-	<bean id="unitsInStockValidator" class="com.fcmm.webstore.validator.UnitsInStockValidator"/>
-	
+	<bean id="unitsInStockValidator" class="com.fcmm.webstore.validator.UnitsInStockValidator" />
+
 	<bean id="productValidator" class="com.fcmm.webstore.validator.ProductValidator">
 		<property name="springValidators">
 			<set>
