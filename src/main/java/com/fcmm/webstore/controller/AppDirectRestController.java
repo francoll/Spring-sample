@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -92,6 +93,7 @@ public class AppDirectRestController {
 				account.setEmail(creator.getFirstChildElement("email").getValue());
 				account.setUuid(creator.getFirstChildElement("uuid").getValue());
 				account.setOpenId(creator.getFirstChildElement("openId").getValue());
+				account.addRole(new SimpleGrantedAuthority("ROLE_ADMIN"));
 				
 				accountService.addAccount(account);
 			}

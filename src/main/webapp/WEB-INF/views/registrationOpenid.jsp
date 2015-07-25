@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
     href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Products</title>
+<title>New Account</title>
 </head>
 <body>
     <section>
         <div class="jumbotron">
             <div class="container">
-                <h1>Registration</h1>
-                <p>Verify your information and create a password</p>
+                <h1>New Account</h1>
+                <p>Verify your information</p>
             </div>
         </div>
     </section>
@@ -28,13 +28,13 @@
                         <form action="<c:url value= "/accounts"></c:url>"
                             method="post">
                             <fieldset>
-                                <p>${product.description}</p>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password"
-                                        name='j_password' type="password" value="">
-                                </div>
+                                <p>${account.username}</p>
+                                <p>${account.fName}</p>
+                                <p>${account.lName}</p>
+                                <p>${account.email}</p>
+                                
                                 <input class="btn btn-lg btn-success btn-block" type="submit"
-                                    value="Login">
+                                    value="Go to accounts">
                             </fieldset>
 
                         </form>
