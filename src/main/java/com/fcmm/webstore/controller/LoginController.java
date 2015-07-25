@@ -43,6 +43,6 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model pModel) {
-		return "login";
+		return "welcome";
 	}
 }

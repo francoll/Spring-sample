@@ -16,9 +16,9 @@ public class InMemoryAccountRepository implements AccountRepository {
 	private List<Account> listOfAccounts = new ArrayList<Account>();
 	
 	public InMemoryAccountRepository() {
-		Account me = new Account("the_boss", "The works");
-		me.setfName("François");
-		me.setlName("Collins");
+		Account me = new Account("the_boss", "HYPOTHETICAL EDITION");
+		me.setfName("Preset");
+		me.setlName("Admin");
 		me.setUsername("admin");
 		me.setPassword("admin");
 		me.setEnabled(true);

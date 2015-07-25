@@ -20,7 +20,7 @@ SavedRequestAwareAuthenticationSuccessHandler {
 		// provide implementation to set user data in session
 
 		// redirecting to landing page
-		getRedirectStrategy().sendRedirect(request, response, "/accounts");
+		//getRedirectStrategy().sendRedirect(request, response, "/accounts");
 		super.onAuthenticationSuccess(request, response, authentication);
 
 	}
